@@ -3,7 +3,12 @@ from .models import ToDoList
 
 # Create your views here.
 def index(request):
-    list = ToDoList.objects.get(id=1)
+    list = ToDoList.objects.all()
+    return render(request, 'home.html', context={"list":list})
+
+
+def list(request, id):
+    list = ToDoList.objects.get(id=id)
     if request.method == "POST":
         print(request.POST)
 
@@ -26,7 +31,7 @@ def index(request):
             for item in list.todoitems_set.all():
                 if str(item.id) == id_to_delete:
                     item.delete()
-        return redirect('index')
+        return redirect('list', id=id)
     else:
         context = {"title":f"{list.title}","items": list.todoitems_set.all() }
         return render(request, 'index.html', context=context)
