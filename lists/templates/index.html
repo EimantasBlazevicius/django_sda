@@ -1,7 +1,37 @@
-{% extends 'base.html' %} 
-{% block title %}<title>My Lists page</title>{%endblock title %} 
+{% extends 'base.html' %} {% block title %}<title>My Lists page</title
+>{%endblock title %} {% block content %}
 
-{% block content %} 
-Hello world form the Index file
-
+<div class="col-2">
+  <form method="post" action="#">
+    {% csrf_token %}
+    <div class="card" style="width: 18rem">
+      <div class="card-header">{{title}}</div>
+      <ul class="list-group list-group-flush">
+        {% for item in items %}
+        <li class="list-group-item">
+          {{item.text}} {% if item.isCompleted %}
+          <input
+            type="checkbox"
+            name="checkbox"
+            value="{{item.id}}"
+            class="checkbox-styles"
+            checked
+          />
+          {% else %}
+          <input
+            type="checkbox"
+            name="checkbox"
+            value="{{item.id}}"
+            class="checkbox-styles"
+          />
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="card-footer">
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
 {% endblock content %}

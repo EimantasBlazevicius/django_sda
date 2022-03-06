@@ -14,7 +14,7 @@ class ToDoList(models.Model):
 
 class ToDoItems(models.Model):
     text = models.CharField('Užduotis', max_length=300, help_text="Ką čia dabar nuveikus")
-    isCompleted = models.BooleanField()
+    isCompleted = models.BooleanField(null=True, default=False)
     list = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
 
     class Meta:
