@@ -3,6 +3,7 @@ from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 
+
 # Create your views here.
 @csrf_protect
 def register(request):
