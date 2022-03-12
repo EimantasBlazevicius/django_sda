@@ -9,6 +9,9 @@ from django.urls import path, include
 # accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
 # accounts/ reset/done/ [name='password_reset_complete']
 
+from . import views
+
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
+    path('register/', views.register, name='register')
 ]
