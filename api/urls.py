@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    # path('register/', views.register, name='register')
-    path('', views.ToDoListList.as_view(), name='todo_lists')
+    path('', views.ToDoListList.as_view(), name='todo_lists'),
+    path('<int:pk>', views.ToDoListDetail.as_view(), name='todo_list_detail')
 ]
