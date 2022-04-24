@@ -6,3 +6,4 @@ class ToDoListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDoList
         fields = '__all__'
+ 
